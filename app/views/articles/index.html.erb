@@ -1,0 +1,22 @@
+<h1>These are the articles created:</h1><br>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= link_to article.title, article_path(article) %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= link_to 'Delete', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to 'Create a new Article', new_article_path %>
